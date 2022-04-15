@@ -13,6 +13,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         firstName: req.body.firstName as string,
         lastName: req.body.lastName as string,
     }
+    //Set default values for the firstName and lastName if they are not provided
+    if(!user_signup_req.firstName){
+        user_signup_req.firstName = "";
+    }
+    if(!user_signup_req.lastName){
+        user_signup_req.lastName = "";
+    }
 
 
   let user
