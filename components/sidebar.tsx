@@ -15,11 +15,12 @@ import {
     MdSearch,
     MdLibraryMusic,
     MdFavorite,
+    MdPlaylistAdd,
 } from 'react-icons/md'
 
 const navMenu = [
     {
-        name: 'Home',
+        name: 'Create',
         icon: MdHome,
         route: '/',
     },
@@ -35,6 +36,34 @@ const navMenu = [
     },
 ]
 
+const playlistMenu = [
+    {
+        name: 'Create Playlist',
+        icon: MdPlaylistAdd,
+        route: '/playlists',
+    },
+    {
+        name: 'Favorites',
+        icon: MdFavorite,
+        route: '/playlists/new',
+    },
+]
+
+const playlists = [
+    {
+        name: 'apri1 ♈️',
+    },
+    {
+        name: 'm@rch',
+    },
+    {
+        name: 'feb23',
+    },
+    {
+        name: 'janewary',
+    },
+]
+
 const Sidebar = () => {
     return (
     <Box 
@@ -44,11 +73,12 @@ const Sidebar = () => {
         paddingX="5px"
         color="gray">
         layout
-        <Box paddingY="20px">
-            <Box width="120px" marginBottom="20px" paddingX="20px">
+        <Box paddingY="20px" height="100%">
+            <Box width="120px" marginBottom="20px" paddingX="10px">
                 <NextImage src="/Spotify_Logo_RGB_White.png" height={70} width={236} />
             </Box>
             <Box marginBottom="20px">
+                <Box>
                 <List spacing={2}>
                     {navMenu.map(menu => (
 
@@ -57,14 +87,37 @@ const Sidebar = () => {
                                 <NextLink href={menu.route} passHref>
                                     <LinkOverlay>
                                     <ListIcon as={menu.icon} color="white" marginRight="20px" />
+                                    {menu.name}
                                     </LinkOverlay>
                                 </NextLink>
                             </LinkBox>
                         </ListItem>
                     ))}
                     </List>
+                </Box>
+                <Divider marginY={4} width="80%"/>
+                <Box>
+                <List spacing={2}>
+                    {playlistMenu.map(menu => (
+
+                        <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
+                            <LinkBox>
+                                <NextLink href={menu.route} passHref>
+                                    <LinkOverlay>
+                                    <ListIcon as={menu.icon} color="white" marginRight="20px" />
+                                    {menu.name}
+                                    </LinkOverlay>
+                                </NextLink>
+                            </LinkBox>
+                        </ListItem>
+                    ))}
+                    </List>
+                </Box>
+                <Box height="66%" overflowY="auto" paddingY="20px">
+                    h
+
+                </Box>
             </Box>
-            content
         </Box>
 
     </Box>
