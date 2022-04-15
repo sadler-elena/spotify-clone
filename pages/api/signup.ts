@@ -6,10 +6,13 @@ import prisma from '../../lib/prisma'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const salt = bcrypt.genSaltSync()
-  const email = req.query.email as string
-  const password = req.query.password as string
-  const firstName = req.query.firstName as string
-  const lastName = req.query.lastName as string
+  //Unpack the body from the request
+    const user_signup_req = {
+        email: req.body.email as string,
+        password: req.body.password as string,
+        firstName: req.body.firstName as string,
+        lastName: req.body.lastName as string,
+    }
 
 
   let user
@@ -17,10 +20,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     user = await prisma.user.create({
       data: {
-        email,
-        password: bcrypt.hashSync(password, salt),
-        firstName: firstName,
-        lastName: lastName,
+        email: user_signup_req.email,
+        password: bcrypt.hashSync(user_signup_req.password, salt),
+        firstName: user_signup_req.firstName,
+        lastName: user_signup_req.lastName,
 
       },
     })
