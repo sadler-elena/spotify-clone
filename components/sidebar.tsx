@@ -52,16 +52,29 @@ const playlistMenu = [
 const playlists = [
     {
         name: 'apri1 ♈️',
+        route: '/playlists/apri1',
     },
     {
         name: 'm@rch',
+        route: '/playlists/m@rch',
     },
     {
         name: 'feb23',
+        route: '/playlists/feb23',
     },
     {
         name: 'janewary',
+        route: '/playlists/janewary',
     },
+    {
+        name: 'paradise',
+        route: '/playlists/paradise',
+    },
+    {
+        name: 'heartlines',
+        route: '/playlists/heartlines',
+    },
+
 ]
 
 const Sidebar = () => {
@@ -74,15 +87,15 @@ const Sidebar = () => {
         color="gray">
         layout
         <Box paddingY="20px" height="100%">
-            <Box width="120px" marginBottom="20px" paddingX="10px">
-                <NextImage src="/Spotify_Logo_RGB_White.png" height={70} width={236} />
+            <Box marginBottom="20px" paddingX="20px">
+                <NextImage src="/Spotify_Logo_RGB_White.png" width="120px" height="35px" />
             </Box>
-            <Box marginBottom="20px">
+            <Box marginBottom="20px" paddingLeft={2}>
                 <Box>
                 <List spacing={2}>
                     {navMenu.map(menu => (
 
-                        <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
+                        <ListItem paddingX="20px" fontSize="14px" fontWeight="bold" key={menu.name}>
                             <LinkBox>
                                 <NextLink href={menu.route} passHref>
                                     <LinkOverlay>
@@ -95,12 +108,11 @@ const Sidebar = () => {
                     ))}
                     </List>
                 </Box>
-                <Divider marginY={4} width="80%"/>
+                <Divider marginY={4} width="80%" color={'gray.700'}/>
                 <Box>
                 <List spacing={2}>
                     {playlistMenu.map(menu => (
-
-                        <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
+                        <ListItem paddingX="20px" fontSize="14px" fontWeight="bold" key={menu.name}>
                             <LinkBox>
                                 <NextLink href={menu.route} passHref>
                                     <LinkOverlay>
@@ -113,8 +125,22 @@ const Sidebar = () => {
                     ))}
                     </List>
                 </Box>
-                <Box height="66%" overflowY="auto" paddingY="20px">
-                    h
+                <Divider marginY={4} width="80%" color={'gray.700'}/>      
+                <Box height="66%" overflowY="auto">
+                    <List spacing={2}>
+                        {playlists.map(menu => (
+
+                            <ListItem paddingX="20px" fontSize="14px" key={menu.name}>
+                                <LinkBox>
+                                    <NextLink href={menu.route} passHref>
+                                        <LinkOverlay>
+                                        {menu.name}
+                                        </LinkOverlay>
+                                    </NextLink>
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                        </List>
 
                 </Box>
             </Box>
