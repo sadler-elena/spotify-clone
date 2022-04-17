@@ -11,8 +11,11 @@ export const validateRoute = (handler) => {
 
       try {
         const { id } = jwt.verify(token, 'hello')
+        //Valid token, get user
         user = await prisma.user.findUnique({
-          where: { id },
+            where: {
+                id,
+            },
         })
 
         if (!user) {
