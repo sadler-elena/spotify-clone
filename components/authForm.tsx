@@ -1,4 +1,4 @@
-import { Box, Flex, Input, Button } from '@chakra-ui/react'
+import { Box, Flex, Input, Button, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import { useSWRConfig } from 'swr'
@@ -33,6 +33,7 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
         <Flex justify="center" align="center" height="calc(100vh - 100px)">
           <Box padding="50px" bg="gray.900" borderRadius="6px">
             <form onSubmit={handleSubmit}>
+              <Stack spacing={4} direction="column">
               <Input
                 placeholder="email"
                 type="email"
@@ -43,9 +44,11 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              </Stack>
               <Button
                 type="submit"
                 bg="green.500"
+                marginTop={6}
                 isLoading={isLoading}
                 sx={{
                   '&:hover': {
